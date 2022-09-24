@@ -1,0 +1,32 @@
+<div class="container-mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo ">Lista de cartas </span>
+          <button class="btn btn-success float-end" routerLink="add">Nuevo Registro</button>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let carta of listCartas">
+                <td scope="col">{{carta.id}}</td>
+                <td scope="col">{{carta.title}}</td>
+                <td scope="col">{{carta.body}}</td>
+                <td>
+                  <i class="fa-solid fa-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
