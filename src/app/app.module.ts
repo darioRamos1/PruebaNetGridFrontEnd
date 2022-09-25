@@ -5,19 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
-import{HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ModalComponent } from './components/modals/modal/modal.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
-  declarations: [
-    AppComponent,
-    ListComponent,
-    AddComponent,
-    ModalComponent
-  ],
+  declarations: [AppComponent, ListComponent, AddComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,9 +20,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgbModule
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
