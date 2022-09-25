@@ -3,19 +3,23 @@
     <div class="col-lg-6 offset-lg-3">
       <div class="card">
         <div class="card-body text-center">
-          <form>
-            <span class="titulo">{{"agregar carta" | uppercase}}</span>
+          <form  [formGroup]="cartaForm" (submit)="agregarCarta()">
+            <span class="titulo">{{  titulo  | uppercase}}</span>
             <div class="mb-3 text-lg-start">
               <label for="exampleFormControlInput1" class="form-label">Title</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Añada un titulo">
+              <input type="text" formControlName="title" class="form-control" id="title" placeholder="Añada un titulo">
+              <span class="text-danger" *ngIf="cartaForm.get('title')?.hasError('required') && cartaForm.get('title')?.touched">Debe colocar un <strong>TITULO</strong></span>
+              <span class="text-danger" *ngIf="cartaForm.get('title')?.errors?.['minlength']">Debe colocar un minimo de 3 caracteres </span>
             </div>
             <div class="mb-3 text-lg-start  ">
               <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Añada un cuerpo"></textarea>
+              <textarea class="form-control" formControlName="body" id="body" rows="3" placeholder="Añada un cuerpo"></textarea>
+              <span class="text-danger" *ngIf="cartaForm.get('body')?.hasError('required') && cartaForm.get('body')?.touched">Debe colocar un <strong>Cuerpo</strong></span>
+              <span class="text-danger" *ngIf="cartaForm.get('body')?.errors?.['minlength']">Debe colocar un minimo de 3 caracteres </span>
             </div>
             <div class="mb-3">
               <button routerLink="/" class="btn btn-secundary btn-lg float-start"> Volver</button>
-              <button type="submit"  class="btn btn-success btn-lg float-end"> Aceptar</button>
+              <button type="submit" [disabled]="cartaForm.invalid"   class="btn btn-success btn-lg float-end">Guardar</button>
             </div>
           </form>
         </div>
