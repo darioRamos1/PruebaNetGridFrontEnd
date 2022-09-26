@@ -1,5 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-.titulo{
-  font-size: 1.8rem;
-  font-family: 'Anonymous Pro', monospace;
+.titulo {
+
+  /*font-family: 'Anonymous Pro', monospace;*/
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+p,
+th {
+  /*   font-family: 'DM Sans', sans-serif; */
+  font-family: "Open Sans", sans-serif;
 }
