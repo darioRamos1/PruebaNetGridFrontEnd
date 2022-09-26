@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Carta } from 'src/app/models/Carta';
 
 import { CartaService } from 'src/app/services/carta.service';
@@ -14,16 +15,18 @@ export class ListComponent implements OnInit {
  closeResult?: string;
 
   constructor(private _cartaService: CartaService,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private toastr: ToastrService,) { }
 
   ngOnInit(): void {
     this.obtenerCartas();
+
   }
 
   obtenerCartas(){
 
     this._cartaService.getAll().subscribe(data => {
-      console.log(data);
+
       this.listCartas = data;
     },
     error => {
@@ -31,11 +34,16 @@ export class ListComponent implements OnInit {
   })
   }
 
-  open(content: any) {
+  open(content: any, carta: Carta) {
+
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
+      if(result=='Aceptar')
+      this.eliminarCarta(carta.id)
+      console.log(this.closeResult);
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      console.log(this.closeResult);
     });
   }
 
@@ -49,4 +57,14 @@ export class ListComponent implements OnInit {
     }
   }
 
+
+  eliminarCarta(id: any){
+    this._cartaService.deleteCarta(id).subscribe(data => {
+      this.toastr.success('El producto fue eliminado con exito!', 'Producto Eliminado!');
+      this.obtenerCartas();
+    },
+    error => {
+      console.log(error);
+    })
+  }
 }

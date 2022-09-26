@@ -1,10 +1,11 @@
-<div class="container-mt-5">
+
+<div class="container-mt-9 ">
   <div class="row">
-    <div class="col-lg-6 offset-lg-3">
+    <div class="col-lg-8 offset-lg-2">
       <div class="card">
         <div class="card-body text-center">
           <span class="titulo ">Lista de cartas </span>
-          <button class="btn btn-success float-end" routerLink="add">Nuevo Registro</button>
+          <button class="btn btn-primary float-end" routerLink="add">Nuevo Registro</button>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -20,7 +21,7 @@
                 <td scope="col">{{carta.title}}</td>
                 <td scope="col">{{carta.body}}</td>
                 <td class ="select">
-                  <i (click)="open(mymodal)" class="fa-solid fa-trash text-danger"></i>
+                  <i (click)="open(mymodal, carta)" class="fa-solid fa-trash text-danger"></i>
                 </td>
               </tr>
             </tbody>
@@ -34,17 +35,17 @@
 
 <ng-template #mymodal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">×</span>
-    </button>
+    <h4 class="modal-title" id="modal-basic-title">Eliminar Registro</h4>
+
+      <span  class="cerrar-modal" (click)="modal.dismiss('Cross click') " aria-hidden="true">x</span>
+
   </div>
   <div class="modal-body">
-    This is example from ItSolutionStuff.com
+    ¿Esta seguro que desea eliminar el registro?
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Cerrar</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Cerrar')">Cerrar</button>
 
-    <button type="button" class="btn btn-success" (click)="modal.close('Save click')">Aceptar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Aceptar')">Aceptar</button>
   </div>
 </ng-template>

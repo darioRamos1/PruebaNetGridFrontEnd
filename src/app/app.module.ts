@@ -11,8 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 @NgModule({
-  declarations: [AppComponent, ListComponent, AddComponent],
+  declarations: [AppComponent, ListComponent, AddComponent, LoginComponent, NavBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

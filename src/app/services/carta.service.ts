@@ -12,11 +12,11 @@ export class CartaService {
   constructor(private http: HttpClient) {
    }
 
-   getAll(): Observable<any> {
+  getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
 
-    postCarta(carta: Carta): Observable<any>{
+  postCarta(carta: Carta): Observable<any>{
     return this.http.post(baseUrl, carta);
   }
 
@@ -26,5 +26,9 @@ export class CartaService {
 
   putCarta(id: string, producto: Carta): Observable<any>{
     return this.http.put(baseUrl+ '/' +id, producto);
+  }
+
+  deleteCarta(id: string): Observable<any>{
+    return this.http.delete(baseUrl+'/'+ id);
   }
 }
